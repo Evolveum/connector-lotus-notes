@@ -18,9 +18,7 @@ package com.evolveum.openicf.lotus;
 
 import org.identityconnectors.framework.common.objects.AttributeInfo;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.NOT_CREATABLE;
 import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.NOT_RETURNED_BY_DEFAULT;
@@ -50,6 +48,14 @@ public enum DominoGroupAttribute implements DominoAttribute {
     MEMBER_PEOPLE("MemberPeople", String.class, NOT_RETURNED_BY_DEFAULT),
     MEMBERS("Members"),
     OBJECT_GUID("objectGUID", String.class, NOT_UPDATEABLE, NOT_CREATABLE);
+
+    private static final Map<String, DominoGroupAttribute> ATTRIBUTE_MAP = new HashMap<String, DominoGroupAttribute>();
+
+    static {
+        for (DominoGroupAttribute attr : DominoGroupAttribute.values()) {
+            ATTRIBUTE_MAP.put(attr.getName(), attr);
+        }
+    }
 
     private String name;
     private Class type;
@@ -103,5 +109,9 @@ public enum DominoGroupAttribute implements DominoAttribute {
 
     public AttributeInfo getAttribute() {
         return attribute;
+    }
+
+    public static DominoGroupAttribute getAttribute(String name) {
+        return ATTRIBUTE_MAP.get(name);
     }
 }

@@ -314,8 +314,17 @@ public class DominoConnector implements PoolableConnector, CreateOp, SchemaOp, T
 
             if (isAttrToGet(attrToGet, name)) {
                 //simply add attribute to connector object
-                DominoAccountAttribute accAttr = DominoAccountAttribute.getAttribute(name);
-                if (GuardedString.class.equals(accAttr.getType())) {
+                DominoAttribute accAttr;
+
+                if (ObjectClass.ACCOUNT.equals(oclass)) {
+                    accAttr = DominoAccountAttribute.getAttribute(name);
+                } else if (ObjectClass.GROUP.equals(oclass)) {
+                    accAttr = DominoGroupAttribute.getAttribute(name);
+                } else {
+                    accAttr = null;
+                }
+
+                if ((accAttr != null) && (GuardedString.class.equals(accAttr.getType()))) {
                     String guarded = (String) values.get(0);
                     object.addAttribute(AttributeBuilder.build(name, new GuardedString(guarded.toCharArray())));
                 } else {
