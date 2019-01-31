@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus.util;
+package com.evolveum.polygon.notes.util;
 
-import com.evolveum.openicf.lotus.*;
+import com.evolveum.polygon.notes.*;
 import lotus.domino.Base;
 import lotus.domino.Name;
 import lotus.domino.NotesException;

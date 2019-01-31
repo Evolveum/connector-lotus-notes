@@ -22,21 +22,20 @@
         <artifactId>connector-parent</artifactId>
         <groupId>com.evolveum.polygon</groupId>
         <version>1.4.2.0</version>
-        <relativePath></relativePath>
     </parent>
 
-    <groupId>com.evolveum.polygon</groupId>
     <artifactId>connector-notes</artifactId>
     <version>1.1</version>
     <packaging>jar</packaging>
-    <name>Lotus Domino Connector</name>
-    <description>Connector for lotus domino</description>
+
+    <name>Lotus Notes Domino Connector</name>
+    <description>Connector for Lotus Notes/Domino</description>
 
     <properties>
         <skipTests>false</skipTests>
         <contracts.skip>true</contracts.skip>
         <privateConfigPath>${user.home}/.connectors/${project.artifactId}/config</privateConfigPath>
-        <connectorPackage>com.evolveum.openicf.lotus</connectorPackage>
+        <connectorPackage>com.evolveum.polygon.notes</connectorPackage>
         <connectorClass>DominoConnector</connectorClass>
     </properties>
 
@@ -80,6 +79,11 @@
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
+
+        <!--
+           Install Notes.jar into local maven repository first:
+           mvn install:install-file -Dfile="Notes.jar" -DgroupId=lotus-notes -DartifactId=notes -Dversion=8.5 -Dpackaging=jar
+          -->
         <dependency>
             <groupId>lotus-notes</groupId>
             <artifactId>notes</artifactId>

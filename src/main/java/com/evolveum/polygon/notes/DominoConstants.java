@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 public class DominoConstants {
 

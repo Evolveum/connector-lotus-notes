@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 import org.identityconnectors.common.security.GuardedString;
 import org.identityconnectors.framework.common.objects.AttributeInfo;
@@ -60,7 +60,7 @@ public enum DominoAccountAttribute implements DominoAttribute {
     END_DATE("EndDate", Integer.class, NOT_READABLE, NOT_RETURNED_BY_DEFAULT),
     FIRST_NAME("FirstName"),
     FORWARDING_ADDRESS("forwardingAddress", String.class, NOT_RETURNED_BY_DEFAULT),
-    FULL_NAME("FullName"),
+    FULL_NAME("FullName", String.class, MULTIVALUED),
     GROUP_LIST("GroupList", String.class, MULTIVALUED),
     HOME_FAX_PHONE_NUMBER("HomeFAXPhoneNumber"),
     HTTP_PASSWORD("HTTPPassword", GuardedString.class, NOT_READABLE, NOT_RETURNED_BY_DEFAULT),
@@ -119,7 +119,7 @@ public enum DominoAccountAttribute implements DominoAttribute {
     ROAM_SRVR("RoamSrvr"),
     ROAM_SUBDIR("RoamSubdir"),
     SAMETIME_SERVER("SametimeServer"),
-    SHORT_NAME("ShortName"),
+    SHORT_NAME("ShortName", String.class, MULTIVALUED),
     SPOUSE("Spouse"),
     STATE("State"),
     STREET_ADDRESS("StreetAddress"),

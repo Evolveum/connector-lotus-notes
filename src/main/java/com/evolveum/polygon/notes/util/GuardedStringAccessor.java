@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus.util;
+package com.evolveum.polygon.notes.util;
 
 import org.identityconnectors.common.security.GuardedString;
 

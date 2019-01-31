@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 import org.apache.commons.lang.StringUtils;
 import org.identityconnectors.common.IOUtil;

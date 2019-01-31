@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 import lotus.domino.Registration;
 import org.apache.commons.lang.StringUtils;
