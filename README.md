@@ -1,5 +1,8 @@
-connector-lotus-notes
-=====================
+ConnId Connector for Lotus Notes/Domino
+=======================================
+
+This is a **LEGACY** connector. It is no longer supported and there are no plans for further development.
+Substantial financial incentive would be needed to resume maintanance of this connector.
 
 **TODO:**
 
