@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 import lotus.domino.NotesException;
 import org.apache.commons.lang.StringUtils;
@@ -28,7 +28,7 @@ import org.identityconnectors.framework.common.objects.filter.*;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.evolveum.openicf.lotus.util.DominoUtils.*;
+import static com.evolveum.polygon.notes.util.DominoUtils.*;
 
 public class DominoFilterTranslator extends AbstractFilterTranslator<String> {
 

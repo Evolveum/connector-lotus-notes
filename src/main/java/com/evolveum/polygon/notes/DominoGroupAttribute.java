@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 import org.identityconnectors.framework.common.objects.AttributeInfo;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.NOT_CREATABLE;
-import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.NOT_RETURNED_BY_DEFAULT;
-import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.NOT_UPDATEABLE;
+import static org.identityconnectors.framework.common.objects.AttributeInfo.Flags.*;
 
 public enum DominoGroupAttribute implements DominoAttribute {
 
@@ -41,15 +37,23 @@ public enum DominoGroupAttribute implements DominoAttribute {
      * 3 - Deny List only
      * 4 - Servers only
      */
-    GROUP_TYPE("GroupType"),
+    GROUP_TYPE("GroupType", Integer.class),
     LAST_MODIFIED("LastModified", Long.class, NOT_UPDATEABLE, NOT_CREATABLE),
     LIST_CATEGORY("ListCategory"),
     LIST_DESCRIPTION("ListDescription"),
     LIST_NAME("ListName"),
-    MEMBER_GROUPS("MemberGroups", String.class, NOT_RETURNED_BY_DEFAULT),
-    MEMBER_PEOPLE("MemberPeople", String.class, NOT_RETURNED_BY_DEFAULT),
-    MEMBERS("Members"),
+    MEMBER_GROUPS("MemberGroups", String.class, NOT_RETURNED_BY_DEFAULT, MULTIVALUED),
+    MEMBER_PEOPLE("MemberPeople", String.class, NOT_RETURNED_BY_DEFAULT, MULTIVALUED),
+    MEMBERS("Members", String.class, MULTIVALUED),
     OBJECT_GUID("objectGUID", String.class, NOT_UPDATEABLE, NOT_CREATABLE);
+
+    private static final Map<String, DominoGroupAttribute> ATTRIBUTE_MAP = new HashMap<String, DominoGroupAttribute>();
+
+    static {
+        for (DominoGroupAttribute attr : DominoGroupAttribute.values()) {
+            ATTRIBUTE_MAP.put(attr.getName(), attr);
+        }
+    }
 
     private String name;
     private Class type;
@@ -103,5 +107,9 @@ public enum DominoGroupAttribute implements DominoAttribute {
 
     public AttributeInfo getAttribute() {
         return attribute;
+    }
+
+    public static DominoGroupAttribute getAttribute(String name) {
+        return ATTRIBUTE_MAP.get(name);
     }
 }

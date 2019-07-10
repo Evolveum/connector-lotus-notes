@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
-import com.evolveum.openicf.lotus.util.DominoUtils;
+import com.evolveum.polygon.notes.util.DominoUtils;
 import lotus.domino.NotesException;
 import org.identityconnectors.common.IOUtil;
 import org.identityconnectors.common.security.GuardedString;

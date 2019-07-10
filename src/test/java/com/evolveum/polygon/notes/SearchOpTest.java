@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
 import org.identityconnectors.framework.api.ConnectorFacade;
 import org.identityconnectors.framework.common.objects.*;

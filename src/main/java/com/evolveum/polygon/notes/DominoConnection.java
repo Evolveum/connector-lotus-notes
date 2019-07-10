@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
-import com.evolveum.openicf.lotus.util.DominoUtils;
-import com.evolveum.openicf.lotus.util.GuardedStringAccessor;
+import com.evolveum.polygon.notes.util.DominoUtils;
+import com.evolveum.polygon.notes.util.GuardedStringAccessor;
 import lotus.domino.*;
 import org.identityconnectors.common.logging.Log;
 import org.identityconnectors.framework.common.exceptions.ConnectorIOException;

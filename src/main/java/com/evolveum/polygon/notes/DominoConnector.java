@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.evolveum.openicf.lotus;
+package com.evolveum.polygon.notes;
 
-import com.evolveum.openicf.lotus.util.DominoUtils;
-import com.evolveum.openicf.lotus.util.RegistrationBuilder;
+import com.evolveum.polygon.notes.util.DominoUtils;
+import com.evolveum.polygon.notes.util.RegistrationBuilder;
 import lotus.domino.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
@@ -33,7 +33,6 @@ import org.identityconnectors.framework.common.objects.filter.EqualsFilter;
 import org.identityconnectors.framework.common.objects.filter.Filter;
 import org.identityconnectors.framework.common.objects.filter.FilterTranslator;
 import org.identityconnectors.framework.spi.Configuration;
-import org.identityconnectors.framework.spi.Connector;
 import org.identityconnectors.framework.spi.ConnectorClass;
 import org.identityconnectors.framework.spi.PoolableConnector;
 import org.identityconnectors.framework.spi.operations.*;
@@ -42,10 +41,10 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.evolveum.openicf.lotus.DominoAccountAttribute.*;
-import static com.evolveum.openicf.lotus.DominoGroupAttribute.*;
-import static com.evolveum.openicf.lotus.DominoOperationOption.*;
-import static com.evolveum.openicf.lotus.util.DominoUtils.*;
+import static com.evolveum.polygon.notes.DominoAccountAttribute.*;
+import static com.evolveum.polygon.notes.DominoGroupAttribute.*;
+import static com.evolveum.polygon.notes.DominoOperationOption.*;
+import static com.evolveum.polygon.notes.util.DominoUtils.*;
 
 /**
  * Documentation:
@@ -314,8 +313,17 @@ public class DominoConnector implements PoolableConnector, CreateOp, SchemaOp, T
 
             if (isAttrToGet(attrToGet, name)) {
                 //simply add attribute to connector object
-                DominoAccountAttribute accAttr = DominoAccountAttribute.getAttribute(name);
-                if (GuardedString.class.equals(accAttr.getType())) {
+                DominoAttribute accAttr;
+
+                if (ObjectClass.ACCOUNT.equals(oclass)) {
+                    accAttr = DominoAccountAttribute.getAttribute(name);
+                } else if (ObjectClass.GROUP.equals(oclass)) {
+                    accAttr = DominoGroupAttribute.getAttribute(name);
+                } else {
+                    accAttr = null;
+                }
+
+                if ((accAttr != null) && (GuardedString.class.equals(accAttr.getType()))) {
                     String guarded = (String) values.get(0);
                     object.addAttribute(AttributeBuilder.build(name, new GuardedString(guarded.toCharArray())));
                 } else {
